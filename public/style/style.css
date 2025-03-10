@@ -1,0 +1,26 @@
+/* CSS Reset */
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+/* Din CSS-kode under her */
+
+.commentList {
+    /* Parent til comment */
+}
+.comment {
+    /* Parent til commentInfo og commentContent */
+}
+.commentInfo {
+    /* Child av comment */
+}
+.commentContent {
+    /* Child av comment */
+}
