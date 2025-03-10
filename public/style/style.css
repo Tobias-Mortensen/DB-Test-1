@@ -104,3 +104,12 @@ p a {
 p a:hover {
     background-color: #218838;
 }
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Prevents resizing */
+}
