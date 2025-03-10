@@ -25,6 +25,7 @@ body {
     width: 80%;
     max-width: 800px;
     margin: 20px auto;
+    word-break: break-word;
 }
 
 .comment {
@@ -72,7 +73,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #8b8b8b;
     color: white;
     padding: 15px 20px;
     border: none;
@@ -83,7 +84,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #000000;
 }
 
 p {
@@ -92,7 +93,7 @@ p {
 
 p a {
     display: inline-block;
-    background-color: #28a745;
+    background-color: #8b8b8b;
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
@@ -102,7 +103,7 @@ p a {
 }
 
 p a:hover {
-    background-color: #218838;
+    background-color: #000000;
 }
 
 textarea {
