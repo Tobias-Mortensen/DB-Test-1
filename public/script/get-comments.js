@@ -17,30 +17,42 @@ async function fetchComments() {
         commentListInformation.className = "commentInfo";
         commentListContent.className = "commentContent";
         //Fyller inn innhold i kommentaren (tidspunkt + id_bruker og kommentar)
-        commentListInformation.textContent = `${comment.Tidspunkt} - Bruker ID ${comment.ID_bruker}:`;
+        const date = new Date(comment.Tidspunkt);
+        const formattedDate = `${date.getDate().toString().padStart(2, "0")}.${(
+            date.getMonth() + 1
+        )
+            .toString()
+            .padStart(2, "0")}.${date.getFullYear()} ${date
+                .getHours()
+                .toString()
+                .padStart(2, "0")}:${date
+                    .getMinutes()
+                    .toString()
+                    .padStart(2, "0")}`;
+        commentListInformation.textContent = `${comment.Brukernavn} - ${formattedDate}`;
         commentListContent.textContent = `${comment.Kommentar}`;
     });
 }
 
-// Funksjon for å sende inn en ny kommentar
-async function submitComment(event) {
-    event.preventDefault();
-    const Kommentar = document.getElementById("Kommentar").value;
-    const response = await fetch("/api/kommentar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Kommentar }),
-    });
-    if (response.ok) {
-        document.getElementById("Kommentar").value = "";
-        fetchComments();
-    } else {
-        alert("Feil ved innsending av kommentar.");
+    // Funksjon for å sende inn en ny kommentar
+    async function submitComment(event) {
+        event.preventDefault();
+        const Kommentar = document.getElementById("Kommentar").value;
+        const response = await fetch("/api/kommentar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Kommentar }),
+        });
+        if (response.ok) {
+            document.getElementById("Kommentar").value = "";
+            fetchComments();
+        } else {
+            alert("Feil ved innsending av kommentar.");
+        }
     }
-}
 
-// Hent kommentarer ved lasting av siden og oppdater med jevne mellomrom
-window.onload = () => {
-    fetchComments();
-    setInterval(fetchComments, 1000);
-};
+    // Hent kommentarer ved lasting av siden og oppdater med jevne mellomrom
+    window.onload = () => {
+        fetchComments();
+        setInterval(fetchComments, 1000);
+    };

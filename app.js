@@ -5,22 +5,22 @@ const path = require("path");
 
 // Rot-rute: Sender brukeren til riktig side basert på om de er logget inn
 app.get("/", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "chat.html"));
+    res.sendFile(path.join(__dirname, "view", "chat.html"));
 });
 
 // Rute for å serve login-siden
 app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "login.html"));
+    res.sendFile(path.join(__dirname, "view", "login.html"));
 });
 
 // Rute for å serve registreringssiden (opprett bruker)
 app.get("/opprett-bruker", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "new-user.html"));
+    res.sendFile(path.join(__dirname, "view", "new-user.html"));
 });
 
 // Rute for å serve kommentar-siden
 app.get("/kommentar", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "view", "chat.html"));
+    res.sendFile(path.join(__dirname, "view", "chat.html"));
 });
 
 // Rute for å logge ut og ødelegge session
@@ -34,7 +34,10 @@ app.get("/logout", (req, res) => {
   API-endepunkt for å hente alle kommentarer.
 */
 app.get("/api/kommentar", isAuthenticated, (req, res) => {
-    const sql = "SELECT * FROM Kommentar";
+    const sql = `SELECT Bruker.Brukernavn, Kommentar.Kommentar, Kommentar.Tidspunkt
+    FROM Kommentar
+    JOIN Bruker ON Kommentar.ID_bruker = Bruker.ID_bruker;
+    `;
     db.all(sql, [], (err, rows) => {
         if (err) {
             console.error("Feil ved henting av kommentarer:", err.message);
