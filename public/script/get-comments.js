@@ -56,3 +56,14 @@ async function fetchComments() {
         fetchComments();
         setInterval(fetchComments, 1000);
     };
+let teller = document.getElementById ("charCount");
+
+    let textfelt = document.getElementById("Kommentar");
+    if(textfelt instanceof HTMLTextAreaElement){
+        textfelt.addEventListener("keyup",()=>{
+            console.log(textfelt.value.length);
+            teller.innerText = (200 - textfelt.value.length) + " tegn igjen"
+        })
+    }
+
+    

@@ -7,7 +7,7 @@
         <title>Tobias FEIN chat</title>
         <link rel="stylesheet" href="/style/style.css" />
 
-  <script src="script/get-comments.js">
+  <script src="script/get-comments.js" defer>
     
   </script>
 </head>
@@ -18,12 +18,12 @@
   <h1>Legg til en kommentar</h1>
   <!-- Skjema for å legge til ny kommentar -->
   <form onsubmit="submitComment(event)">
-    <textarea id="Kommentar" required placeholder="Skriv din kommentar her..."></textarea>
-    <br>
+    <textarea id="Kommentar" maxlength="200" required placeholder="Skriv din kommentar her..."></textarea>
+    <div id="charCount">200</div>
     <br>
     <button type="submit">Legg til kommentar</button>
   </form>
   
-  <p><a href="/logout">Logg ut</a></p>
+  <p><a class="logout-link" href="/logout">Logg ut</a></p>
 </body>
 </html>

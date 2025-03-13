@@ -19,7 +19,7 @@ app.get("/opprett-bruker", (req, res) => {
 });
 
 // Rute for å serve kommentar-siden
-app.get("/kommentar", (req, res) => {
+app.get("/kommentar", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "view", "chat.html"));
 });
 
@@ -117,9 +117,9 @@ app.post("/api/kommentar", isAuthenticated, (req, res) => {
     const Tidspunkt = new Date().toISOString();
     const sql = `INSERT INTO Kommentar (ID_bruker, Kommentar, Tidspunkt) VALUES (?, ?, ?)`;
 
-    db.run(sql, [ID_bruker, Kommentar, Tidspunkt], function (err) {
+    db.run(sql, [ID_bruker, Kommentar.substring(0, 200), Tidspunkt], function (err) {
         if (err) {
-            console.error("Feil ved innsetting av kommentar:", err.message);
+            console.error("Feil ved innsetting av kommentar:", err.message);   
             return res.status(500).json({ error: err.message });
         }
         res.json({
