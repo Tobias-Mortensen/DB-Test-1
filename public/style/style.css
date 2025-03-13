@@ -31,21 +31,22 @@ body {
 .comment {
     background-color: #8D6E63;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
     margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.637);
     padding: 20px;
 }
 
 .commentInfo {
     font-size: 1.2em;
     color: #dbccb6;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.637);
     margin-bottom: 10px;
 }
 
 .commentContent {
     font-size: 1.1em;
-    color: #333;
+    color:#dbccb6;
 }
 
 
@@ -99,11 +100,11 @@ button[type="submit"] {
 }
 
 .register-link:hover {
-    background-color: #D2691E;
+    background-color: #8D6E63;
 }
 
 button[type="submit"]:hover {
-    background-color: #D2691E;
+    background-color: #8D6E63;
 }
 
 p {
@@ -127,7 +128,7 @@ p .logout-link {
 }
 
 p a:hover {
-    background-color: #D2691E;
+    background-color: #8D6E63;
 }
 
 textarea {
@@ -140,7 +141,7 @@ textarea {
 }
 
 #charCount{
-    font-size: 70px;
+    font-size: 35px;
 }
 
 #Kommentar{
